@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             x:Class="EscanerEquipos.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="5" Padding="10" VerticalOptions="Center">
+            <Label Text="ESCANER DE EQUIPOS" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+
+            <Editor x:Name="barcodeEntry" Placeholder="Escanea un QR para obtener información" IsReadOnly="True"/>
+
+            <Entry x:Name="manualEntry" Placeholder="Ingresa estado del equipo" FontSize="15" MaxLength="100"/>
+            <Entry x:Name="manual2Entry" Placeholder="Ingresa observación del equipo" FontSize="15" MaxLength="100"/>
+
+            <cv:CameraView x:Name="cameraView" WidthRequest="300" HeightRequest="200" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
+            
+            <Button Clicked="ToggleCamera_Clicked" TextColor="White" WidthRequest="100">
+                <Button.ImageSource>
+                    <FileImageSource File="togglecam.png"/>
+                </Button.ImageSource>
+            </Button>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Grid.Row="0">
+                    <Button Text="Guardar información" Clicked="Guardar_Clicked" BackgroundColor="#005EA8" TextColor="White" Margin="3" />
+                    <Button Text="Historial de escaneos" Clicked="Historia_Clicked" BackgroundColor="ForestGreen" TextColor="White" Margin="3"/>
+                </StackLayout>
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

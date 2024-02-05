@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EscanerEquipos.Views.CustomPopupPage"
+             Title="CustomPopupPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackLayout Orientation="Horizontal" Margin="5" Grid.Row="0">
+            <Button Text="Volver" BackgroundColor="#005EA8" TextColor="White" Clicked="BackButton_Clicked" Margin="3"/>
+            <Button Text="Copiar" BackgroundColor="ForestGreen" TextColor="White" Clicked="CopyButton_Clicked" Margin="3"/>
+        </StackLayout>
+
+        <Editor x:Name="contentEntry" IsReadOnly="True" Grid.Row="1" Margin="5"/>
+    </Grid>
+</ContentPage>

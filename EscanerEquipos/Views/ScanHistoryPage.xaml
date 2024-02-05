@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EscanerEquipos.Views.ScanHistoryPage"
+             Title="Historial de escaneos">
+    <StackLayout>
+        <ListView x:Name="scanHistoryListView" IsPullToRefreshEnabled="True" ItemTapped="scanHistoryListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding ScanDate, StringFormat='Fecha: {0:dd-MM-yyyy HH:mm:ss}'}" Margin="10,0,0,0" Grid.Row="0" Grid.Column="0"/>
+                            <Label Text="{Binding Content}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="0"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="5">
+            <Button Text="Anterior" BackgroundColor="#005EA8" TextColor="White" Margin="3" Clicked="PreviousButton_Clicked" />
+            <Button Text="Siguiente" BackgroundColor="ForestGreen" TextColor="White" Margin="3" Clicked="NextButton_Clicked" />
+            <Button Text="Borrar" TextColor="White" Margin="3" Clicked="DeleteButton_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
