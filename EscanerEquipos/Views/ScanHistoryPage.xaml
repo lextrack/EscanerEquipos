@@ -8,19 +8,27 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                        <Frame BorderColor="Gray" Padding="5" CornerRadius="5" Margin="5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Label Text="{Binding ScanDate, StringFormat='Fecha: {0:dd-MM-yyyy HH:mm:ss}'}" Margin="10,0,0,0" Grid.Row="0" Grid.Column="0"/>
-                            <Label Text="{Binding Content}" Margin="10,0,0,0" Grid.Row="1" Grid.Column="0"/>
-                        </Grid>
+                                <Label Text="{Binding ScanDate, StringFormat='Fecha: {0:dd-MM-yyyy HH:mm:ss}'}" 
+                                   Margin="10,0,0,0" 
+                                   Grid.Row="0" 
+                                   Grid.Column="0"/>
+                                <Label Text="{Binding Content}" 
+                                   Margin="10,0,0,0" 
+                                   Grid.Row="1" 
+                                   Grid.Column="0"/>
+                            </Grid>
+                        </Frame>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
