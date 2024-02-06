@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>EscanerEquipos</ApplicationTitle>
+		<ApplicationTitle>Escaner Equipos</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.escanerequipos</ApplicationId>
@@ -76,7 +76,7 @@
 		<MauiIcon Include="Resources\AppIcon\barcodescanner.png" Color="#005EA8" ForegroundScale="0.75" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splashlex.png" Color="#005EA8" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splashlex.png" Color="#005EA8" BaseSize="150,150" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
