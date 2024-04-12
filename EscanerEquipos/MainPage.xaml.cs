@@ -80,7 +80,7 @@ namespace EscanerEquipos
             }
             else
             {
-                DisplayAlert("Cambio de cámara", "No hay cámaras disponibles para cambiar.", "OK");
+                DisplayAlert("Cambio de cámara", "No hay cámaras disponibles en el dispositivo para cambiar.", "OK");
             }
         }
 
@@ -110,22 +110,33 @@ namespace EscanerEquipos
 
         private void Guardar_Clicked(object sender, EventArgs e)
         {
+            // Obtener contenido del campo de entrada del código de barras.
             string scannedContent = barcodeEntry.Text;
+
+            // Obtener contenido del primer campo de entrada manual.
             string manualContent = manualEntry.Text;
+
+            // Obtener contenido del segundo campo de entrada manual.
             string manual2Content = manual2Entry.Text;
 
+            // Verificar si alguna de las entradas no está vacía antes de proceder.
             if (!string.IsNullOrEmpty(scannedContent) || !string.IsNullOrEmpty(manualContent) || !string.IsNullOrEmpty(manual2Content))
             {
-                string combinedContent = $"{scannedContent}\nEstado del equipo: {manualContent}\nObservación del equipo: {manual2Content}";
+                // Formatear el contenido combinado con etiquetas descriptivas.
+                string combinedContent = $"{scannedContent}\nObservación 1: {manualContent}\nObservación 2: {manual2Content}";
 
+                // Capturar la fecha y hora actual.
                 DateTime scanDate = DateTime.Now; // Obtener la fecha y hora actual
+                                                  // Crear un nuevo objeto de historial de escaneo con la fecha y contenido combinado.
                 var scanItem = new ScanItem(scanDate, combinedContent);
+                // Agregar el nuevo ítem de escaneo al historial.
                 scanHistory.Add(scanItem);
 
-                // Almacenar historial persistentemente
+                // Convertir el historial de escaneos a string y almacenarlo persistentemente.
                 var historyString = string.Join(",", scanHistory.Select(item => item.ToString()));
                 Preferences.Set("ScanHistory", historyString);
 
+                // Limpiar los campos de texto después de guardar.
                 barcodeEntry.Text = "";
                 manualEntry.Text = "";
                 manual2Entry.Text = "";
@@ -135,6 +146,13 @@ namespace EscanerEquipos
         private async void Historia_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScanHistoryPage());
+        }
+
+        private void Limpiar_Clicked(object sender, EventArgs e)
+        {
+            barcodeEntry.Text = "";
+            manualEntry.Text = "";
+            manual2Entry.Text = "";
         }
 
         public class ScanItem
@@ -169,5 +187,6 @@ namespace EscanerEquipos
                 return null;
             }
         }
+
     }
 }

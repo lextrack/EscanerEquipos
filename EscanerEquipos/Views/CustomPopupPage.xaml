@@ -11,7 +11,7 @@
 
 
         <StackLayout Orientation="Horizontal" Margin="5" Grid.Row="0">
-            <Button Text="Volver" BackgroundColor="#005EA8" TextColor="White" Clicked="BackButton_Clicked" Margin="3"/>
+            <Button Text="Volver" BackgroundColor="#246EE9" TextColor="White" Clicked="BackButton_Clicked" Margin="3"/>
             <Button Text="Copiar" BackgroundColor="ForestGreen" TextColor="White" Clicked="CopyButton_Clicked" Margin="3"/>
         </StackLayout>
 

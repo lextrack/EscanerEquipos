@@ -33,9 +33,9 @@
         </ListView>
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="5">
-            <Button Text="Anterior" BackgroundColor="#005EA8" TextColor="White" Margin="3" Clicked="PreviousButton_Clicked" />
+            <Button Text="Anterior" BackgroundColor="#246EE9" TextColor="White" Margin="3" Clicked="PreviousButton_Clicked" />
             <Button Text="Siguiente" BackgroundColor="ForestGreen" TextColor="White" Margin="3" Clicked="NextButton_Clicked" />
-            <Button Text="Borrar" TextColor="White" Margin="3" Clicked="DeleteButton_Clicked"/>
+            <Button Text="Borrar" TextColor="White" Margin="3" BackgroundColor="#FF2400" Clicked="DeleteButton_Clicked"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>
