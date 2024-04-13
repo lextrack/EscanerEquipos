@@ -4,7 +4,7 @@
              x:Class="EscanerEquipos.Views.ScanHistoryPage"
              Title="Historial de escaneos">
     <StackLayout>
-        <ListView x:Name="scanHistoryListView" IsPullToRefreshEnabled="True" ItemTapped="scanHistoryListView_ItemTapped">
+        <ListView x:Name="scanHistoryListView" IsPullToRefreshEnabled="False" ItemTapped="scanHistoryListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -15,7 +15,7 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
                             <Label Text="{Binding ScanDate, StringFormat='Fecha: {0:dd-MM-yyyy HH:mm:ss}'}" 
@@ -23,7 +23,7 @@
                                    Grid.Row="0" 
                                    Grid.Column="0"/>
                             <Label Text="{Binding Content}" 
-                                   Margin="10,2,0,30" 
+                                   Margin="10,2,0,20" 
                                    Grid.Row="1" 
                                    Grid.Column="0"/>
                         </Grid>
