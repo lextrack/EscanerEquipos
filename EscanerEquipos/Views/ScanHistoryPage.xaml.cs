@@ -89,7 +89,7 @@ public partial class ScanHistoryPage : ContentPage
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
         bool isConfirmed = await DisplayAlert(
-            "Confirmar Borrado",
+            "Eliminar",
             "¿Quieres eliminar los registros que tienen 30 días de antiguedad?",
             "Sí",
             "No"

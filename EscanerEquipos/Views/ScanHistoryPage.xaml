@@ -15,7 +15,7 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
                             <Label Text="{Binding ScanDate, StringFormat='Fecha: {0:dd-MM-yyyy HH:mm:ss}'}" 
@@ -23,7 +23,7 @@
                                    Grid.Row="0" 
                                    Grid.Column="0"/>
                             <Label Text="{Binding Content}" 
-                                   Margin="10,0,0,10" 
+                                   Margin="10,2,0,30" 
                                    Grid.Row="1" 
                                    Grid.Column="0"/>
                         </Grid>
@@ -33,9 +33,29 @@
         </ListView>
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="5">
-            <Button Text="Anterior" BackgroundColor="#246EE9" TextColor="White" Margin="3" Clicked="PreviousButton_Clicked" />
-            <Button Text="Siguiente" BackgroundColor="ForestGreen" TextColor="White" Margin="3" Clicked="NextButton_Clicked" />
-            <Button Text="Borrar" TextColor="White" Margin="3" BackgroundColor="#FF2400" Clicked="DeleteButton_Clicked"/>
+            <Button Clicked="PreviousButton_Clicked" TextColor="White" BackgroundColor="#246EE9" Margin="3" 
+                    WidthRequest="55" HeightRequest="40" 
+                    ToolTipProperties.Text="Página anterior">
+                <Button.ImageSource>
+                    <FileImageSource File="previouspage.png"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Button Clicked="NextButton_Clicked" TextColor="White" BackgroundColor="ForestGreen" Margin="3" 
+                    WidthRequest="55" HeightRequest="40"
+                    ToolTipProperties.Text="Página siguiente">
+                <Button.ImageSource>
+                    <FileImageSource File="nextpage.png"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Button Clicked="DeleteButton_Clicked" TextColor="White" BackgroundColor="#FF2400" Margin="3" 
+                    WidthRequest="55" HeightRequest="40" 
+                    ToolTipProperties.Text="Eliminar contenido">
+                <Button.ImageSource>
+                    <FileImageSource File="bin.png"/>
+                </Button.ImageSource>
+            </Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>

@@ -11,7 +11,7 @@ public partial class CustomPopupPage : ContentPage
     private void CopyButton_Clicked(object sender, EventArgs e)
     {
         Clipboard.SetTextAsync(contentEntry.Text);
-        DisplayAlert("Copia Exitosa", "El contenido ha sido copiado al portapapeles.", "OK");
+        DisplayAlert("Copiar", "El contenido ha sido copiado al portapapeles.", "OK");
     }
 
     private async void BackButton_Clicked(object sender, EventArgs e)

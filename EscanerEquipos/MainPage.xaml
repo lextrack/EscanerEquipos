@@ -6,7 +6,7 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="5" Padding="10" VerticalOptions="Center">
-            <Label Text="ESCANER DE EQUIPOS" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="ESCANER DE QR" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
 
             <Editor x:Name="barcodeEntry" Placeholder="Escanea un QR para leer su información aquí" FontSize="13" IsReadOnly="True"/>
             <Entry x:Name="manualEntry" Placeholder="Ingresa una observación" FontSize="13" MaxLength="100"/>
