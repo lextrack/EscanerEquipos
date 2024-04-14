@@ -39,6 +39,38 @@ namespace EscanerEquipos
                 }
             }
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Asegúrate de que el CameraView está inicializado y tiene cámaras disponibles
+            if (cameraView != null && cameraView.Cameras.Count > 0)
+            {
+                // Detiene la cámara si está activa y la reinicia
+                await cameraView.StopCameraAsync();
+                await cameraView.StartCameraAsync();
+            }
+        }
+
+        private SemaphoreSlim cameraSemaphore = new SemaphoreSlim(1, 1);
+
+        protected override async void OnDisappearing()
+        {
+            await cameraSemaphore.WaitAsync();
+            try
+            {
+                base.OnDisappearing();
+                if (cameraView != null)
+                {
+                    await cameraView.StopCameraAsync();
+                }
+            }
+            finally
+            {
+                cameraSemaphore.Release();
+            }
+        }
+
 
         private void cameraView_CamerasLoaded(object sender, EventArgs e)
         {
@@ -56,7 +88,6 @@ namespace EscanerEquipos
                 });
             }
         }
-
 
         private int currentCameraIndex = 0;
 
