@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>Escaner Equipos</ApplicationTitle>
+		<ApplicationTitle>Escaner QR</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.escanerequipos</ApplicationId>
@@ -40,35 +40,35 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-	  <ApplicationTitle>Escaner Equipos</ApplicationTitle>
+	  <ApplicationTitle>Escaner QR</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
-	  <ApplicationTitle>Escaner Equipos</ApplicationTitle>
+	  <ApplicationTitle>Escaner QR</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
-	  <ApplicationTitle>Escaner Equipos</ApplicationTitle>
+	  <ApplicationTitle>Escaner QR</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationTitle>Escaner Equipos</ApplicationTitle>
+	  <ApplicationTitle>Escaner QR</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-	  <ApplicationTitle>Escaner Equipos</ApplicationTitle>
+	  <ApplicationTitle>Escaner QR</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-	  <ApplicationTitle>Escaner Equipos</ApplicationTitle>
+	  <ApplicationTitle>Escaner QR</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
-	  <ApplicationTitle>Escaner Equipos</ApplicationTitle>
+	  <ApplicationTitle>Escaner QR</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationTitle>Escaner Equipos</ApplicationTitle>
+	  <ApplicationTitle>Escaner QR</ApplicationTitle>
 	</PropertyGroup>
 
 	<ItemGroup>

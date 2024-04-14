@@ -4,11 +4,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:EscanerEquipos"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:EscanerEquipos.Views"
+    Shell.FlyoutBehavior="Flyout" BackgroundColor="#482fa1">
 
     <ShellContent
         Title="Inicio"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage" 
+        Icon="home1.png"/>
+
+    <ShellContent
+        Title="Historial"
+        ContentTemplate="{DataTemplate views:ScanHistoryPage}"
+        Route="ScanHistoryPage" 
+        Icon="history1.png"/>
 
 </Shell>
