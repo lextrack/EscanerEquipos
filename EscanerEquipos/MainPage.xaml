@@ -17,9 +17,9 @@
                            BarCodeDetectionEnabled="True" 
                            BarcodeDetected="cameraView_BarcodeDetected"/>
 
-            <Button Clicked="ToggleCamera_Clicked" TextColor="White" BackgroundColor="#FF2400"
-                    WidthRequest="120" HeightRequest="50"
-                    ToolTipProperties.Text="Cambiar cámara">
+            <Button Clicked="ToggleCamera_Clicked" 
+                    BackgroundColor="#FF2400" 
+                    WidthRequest="100" HeightRequest="40" ToolTipProperties.Text="Cambiar cámara">
                 <Button.ImageSource>
                     <FileImageSource File="togglecam.png"/>
                 </Button.ImageSource>
@@ -32,7 +32,7 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Grid.Row="0">
-                    <Button Clicked="Guardar_Clicked" BackgroundColor="ForestGreen" TextColor="White" Margin="3" 
+                    <Button Clicked="Guardar_Clicked" BackgroundColor="ForestGreen" Margin="3" 
                     WidthRequest="55" HeightRequest="40" 
                     ToolTipProperties.Text="Guardar datos">
                         <Button.ImageSource>
@@ -40,15 +40,21 @@
                         </Button.ImageSource>
                     </Button>
 
-                    <Button Clicked="Limpiar_Clicked" TextColor="White" BackgroundColor="#246EE9" Margin="3" 
+                    <Button Clicked="Historia_Clicked" BackgroundColor="#246EE9" Margin="3" 
+                    WidthRequest="55" HeightRequest="40" 
+                    ToolTipProperties.Text="Historial de QR escaneados">
+                        <Button.ImageSource>
+                            <FileImageSource File="history.png"/>
+                        </Button.ImageSource>
+                    </Button>
+
+                    <Button Clicked="Limpiar_Clicked" Margin="3" 
                     WidthRequest="55" HeightRequest="40" 
                     ToolTipProperties.Text="Limpiar campos">
                         <Button.ImageSource>
                             <FileImageSource File="clean.png"/>
                         </Button.ImageSource>
                     </Button>
-                    
-                    <!-- <Button Text="Historial" Clicked="Historia_Clicked" BackgroundColor="ForestGreen" TextColor="White" Margin="3"/> -->
                 </StackLayout>
 
             </Grid>

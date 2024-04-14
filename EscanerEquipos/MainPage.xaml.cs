@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using EscanerEquipos.Views;
+using System.Collections.ObjectModel;
 using System.Globalization;
 
 namespace EscanerEquipos
@@ -39,38 +40,6 @@ namespace EscanerEquipos
                 }
             }
         }
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            // Asegúrate de que el CameraView está inicializado y tiene cámaras disponibles
-            if (cameraView != null && cameraView.Cameras.Count > 0)
-            {
-                // Detiene la cámara si está activa y la reinicia
-                await cameraView.StopCameraAsync();
-                await cameraView.StartCameraAsync();
-            }
-        }
-
-        private SemaphoreSlim cameraSemaphore = new SemaphoreSlim(1, 1);
-
-        protected override async void OnDisappearing()
-        {
-            await cameraSemaphore.WaitAsync();
-            try
-            {
-                base.OnDisappearing();
-                if (cameraView != null)
-                {
-                    await cameraView.StopCameraAsync();
-                }
-            }
-            finally
-            {
-                cameraSemaphore.Release();
-            }
-        }
-
 
         private void cameraView_CamerasLoaded(object sender, EventArgs e)
         {
@@ -88,6 +57,7 @@ namespace EscanerEquipos
                 });
             }
         }
+
 
         private int currentCameraIndex = 0;
 
@@ -110,7 +80,7 @@ namespace EscanerEquipos
             }
             else
             {
-                DisplayAlert("Cambio de cámara", "No hay cámaras disponibles en el dispositivo para cambiar. Reinicia la app si conectaste una cámara", "OK");
+                DisplayAlert("Cambio de cámara", "No hay cámaras disponibles en el dispositivo para cambiar.", "OK");
             }
         }
 
@@ -133,7 +103,7 @@ namespace EscanerEquipos
                 else
                 {
                     // Mostrar una alerta en caso de que no se haya detectado ningún código de barras válido
-                    DisplayAlert("Error", "Escaneo erróneo", "OK");
+                    DisplayAlert("Detalles del escaneo", "Escaneo erróneo", "OK");
                 }
             });
         }
@@ -170,15 +140,13 @@ namespace EscanerEquipos
                 barcodeEntry.Text = "";
                 manualEntry.Text = "";
                 manual2Entry.Text = "";
-
-                DisplayAlert("Guardar", "El contenido ha sido guardado en el historial.", "OK");
             }
         }
 
-        /*private async void Historia_Clicked(object sender, EventArgs e)
+        private async void Historia_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScanHistoryPage());
-        }*/
+        }
 
         private void Limpiar_Clicked(object sender, EventArgs e)
         {
