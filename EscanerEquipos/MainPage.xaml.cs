@@ -80,7 +80,7 @@ namespace EscanerEquipos
             }
             else
             {
-                DisplayAlert("Cambio de cámara", "No hay cámaras disponibles en el dispositivo para cambiar.", "OK");
+                DisplayAlert("Toggle camera", "There are no cameras connected to the device.", "OK");
             }
         }
 
@@ -103,7 +103,7 @@ namespace EscanerEquipos
                 else
                 {
                     // Mostrar una alerta en caso de que no se haya detectado ningún código de barras válido
-                    DisplayAlert("Detalles del escaneo", "Escaneo erróneo", "OK");
+                    DisplayAlert("Scan details", "Incorrect scanning", "OK");
                 }
             });
         }
@@ -123,7 +123,7 @@ namespace EscanerEquipos
             if (!string.IsNullOrEmpty(scannedContent) || !string.IsNullOrEmpty(manualContent) || !string.IsNullOrEmpty(manual2Content))
             {
                 // Formatear el contenido combinado con etiquetas descriptivas.
-                string combinedContent = $"{scannedContent}\nObservación 1: {manualContent}\nObservación 2: {manual2Content}";
+                string combinedContent = $"{scannedContent}\nComment 1: {manualContent}\nComment 2: {manual2Content}";
 
                 // Capturar la fecha y hora actual.
                 DateTime scanDate = DateTime.Now; // Obtener la fecha y hora actual
@@ -146,6 +146,11 @@ namespace EscanerEquipos
         private async void Historia_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScanHistoryPage());
+        }
+
+        private async void Info_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new InformationPage());
         }
 
         private void Limpiar_Clicked(object sender, EventArgs e)

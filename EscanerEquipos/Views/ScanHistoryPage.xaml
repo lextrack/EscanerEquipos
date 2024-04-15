@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EscanerEquipos.Views.ScanHistoryPage"
-             Title="Historial de escaneos">
+             Title="Scan history">
     <StackLayout>
         <ListView x:Name="scanHistoryListView" IsPullToRefreshEnabled="False" ItemTapped="scanHistoryListView_ItemTapped">
             <ListView.ItemTemplate>
@@ -18,7 +18,7 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Text="{Binding ScanDate, StringFormat='Fecha: {0:dd-MM-yyyy HH:mm:ss}'}" 
+                            <Label Text="{Binding ScanDate, StringFormat='Date: {0:dd-MM-yyyy HH:mm:ss}'}" 
                                    Margin="10,0,0,0" 
                                    Grid.Row="0" 
                                    Grid.Column="0"/>
@@ -35,7 +35,7 @@
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="5">
             <Button Clicked="PreviousButton_Clicked" TextColor="White" BackgroundColor="#246EE9" Margin="3" 
                     WidthRequest="55" HeightRequest="40" 
-                    ToolTipProperties.Text="Página anterior">
+                    ToolTipProperties.Text="Previous page">
                 <Button.ImageSource>
                     <FileImageSource File="previouspage.png"/>
                 </Button.ImageSource>
@@ -43,7 +43,7 @@
 
             <Button Clicked="NextButton_Clicked" TextColor="White" BackgroundColor="ForestGreen" Margin="3" 
                     WidthRequest="55" HeightRequest="40"
-                    ToolTipProperties.Text="Página siguiente">
+                    ToolTipProperties.Text="Next page">
                 <Button.ImageSource>
                     <FileImageSource File="nextpage.png"/>
                 </Button.ImageSource>
@@ -51,7 +51,7 @@
 
             <Button Clicked="DeleteButton_Clicked" TextColor="White" BackgroundColor="#FF2400" Margin="3" 
                     WidthRequest="55" HeightRequest="40" 
-                    ToolTipProperties.Text="Eliminar contenido">
+                    ToolTipProperties.Text="Delete content">
                 <Button.ImageSource>
                     <FileImageSource File="bin.png"/>
                 </Button.ImageSource>

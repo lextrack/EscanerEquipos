@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EscanerEquipos.Views.CustomPopupPage"
-             Title="CustomPopupPage">
+             Title="Scanning information">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -13,7 +13,7 @@
         <StackLayout Orientation="Horizontal" Margin="5" Grid.Row="0">
             <Button Clicked="BackButton_Clicked" TextColor="White" BackgroundColor="#246EE9" Margin="3" 
                     WidthRequest="55" HeightRequest="40" 
-                    ToolTipProperties.Text="Volver">
+                    ToolTipProperties.Text="Back">
                 <Button.ImageSource>
                     <FileImageSource File="arrowback.png"/>
                 </Button.ImageSource>
@@ -21,7 +21,7 @@
 
             <Button Clicked="CopyButton_Clicked" TextColor="White" BackgroundColor="ForestGreen" Margin="3"
                     WidthRequest="55" HeightRequest="40" 
-                    ToolTipProperties.Text="Copiar contenido">
+                    ToolTipProperties.Text="Copy content">
                 <Button.ImageSource>
                     <FileImageSource File="copy.png"/>
                 </Button.ImageSource>
