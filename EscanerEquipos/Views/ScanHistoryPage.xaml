@@ -18,7 +18,7 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Text="{Binding ScanDate, StringFormat='Date: {0:dd-MM-yyyy HH:mm:ss}'}" 
+                            <Label Text="{Binding ScanDate, StringFormat='Date: {0:MM-dd-yyyy HH:mm:ss}'}" 
                                    Margin="10,0,0,0" 
                                    Grid.Row="0" 
                                    Grid.Column="0"/>

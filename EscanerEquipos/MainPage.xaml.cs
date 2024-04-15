@@ -175,15 +175,15 @@ namespace EscanerEquipos
             // Método que convierte un objeto ScanItem a una cadena con formato específico para almacenar en Preferences
             public override string ToString()
             {
-                // El formato de almacenamiento es: "dd-MM-yyyy HH:mm:ss|Contenido del escaneo"
-                return $"{ScanDate:dd-MM-yyyy HH:mm:ss}|{Content}";
+                // El formato de almacenamiento es: "MM-dd-yyyy HH:mm:ss|Contenido del escaneo"
+                return $"{ScanDate:MM-dd-yyyy HH:mm:ss}|{Content}";
             }
 
             // Método estático que crea un objeto ScanItem a partir de una cadena con formato específico almacenada en Preferences
             public static ScanItem FromString(string value)
             {
                 var parts = value.Split('|');
-                if (parts.Length == 2 && DateTime.TryParseExact(parts[0], "dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime scanDate))
+                if (parts.Length == 2 && DateTime.TryParseExact(parts[0], "MM-dd-yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime scanDate))
                 {
                     // Si la cadena tiene el formato correcto, se crea y devuelve un nuevo objeto ScanItem
                     return new ScanItem(scanDate, parts[1]);
