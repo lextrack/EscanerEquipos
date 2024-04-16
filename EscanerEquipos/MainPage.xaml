@@ -28,9 +28,10 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Grid.Row="0">
+                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                     <Button Clicked="Guardar_Clicked" BackgroundColor="ForestGreen" Margin="3" 
                     WidthRequest="55" HeightRequest="40" 
                     ToolTipProperties.Text="Save data">
@@ -47,24 +48,24 @@
                         </Button.ImageSource>
                     </Button>
 
-                    <Button Clicked="Limpiar_Clicked" Margin="3" 
+                    <Button Clicked="Limpiar_Clicked" Margin="3"
                     WidthRequest="55" HeightRequest="40" 
                     ToolTipProperties.Text="Clear Fields">
                         <Button.ImageSource>
                             <FileImageSource File="clean.png"/>
                         </Button.ImageSource>
                     </Button>
+
                 </StackLayout>
-
-            </Grid>
-
-            <Button Clicked="Info_Clicked" HorizontalOptions="End" BackgroundColor="#246EE9" Margin="3" 
+                <Button Clicked="Info_Clicked" BackgroundColor="#246EE9" Margin="3" HorizontalOptions="End"
                     WidthRequest="55" HeightRequest="40" 
                     ToolTipProperties.Text="About">
-                <Button.ImageSource>
-                    <FileImageSource File="info.png"/>
-                </Button.ImageSource>
-            </Button>
+                    <Button.ImageSource>
+                        <FileImageSource File="info.png"/>
+                    </Button.ImageSource>
+                </Button>
+            </Grid>
+
 
         </VerticalStackLayout>
     </ScrollView>
