@@ -1,5 +1,7 @@
-<h1 align="center">Escaner de equipos</h1>
+<h1 align="center">Escaner</h1>
 
-<img src="./EscanerEquipos/Docs/1.jpg">
-<img src="./EscanerEquipos/Docs/2.jpg">
-<img src="./EscanerEquipos/Docs/3.jpg">
+
+<img src="./EscanerEquipos/Docs/1.jpg" width="300px">
+<img src="./EscanerEquipos/Docs/2.jpg" width="400px">
+<img src="./EscanerEquipos/Docs/3.jpg" width="400px">
+
