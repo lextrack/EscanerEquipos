@@ -1,4 +1,5 @@
-﻿using EscanerEquipos.Views;
+﻿using Camera.MAUI;
+using EscanerEquipos.Views;
 using System.Collections.ObjectModel;
 using System.Globalization;
 
@@ -58,6 +59,17 @@ namespace EscanerEquipos
             }
         }
 
+        private async void OnToggleTorchClicked(object sender, EventArgs e)
+        {
+            if (cameraView.FlashMode == FlashMode.Disabled)
+            {
+                cameraView.FlashMode = FlashMode.Enabled;
+            }
+            else
+            {
+                await DisplayAlert("Torch Unavailable", "Torch is not available on this device's camera.", "OK");
+            }
+        }
 
         private int currentCameraIndex = 0;
 
@@ -106,6 +118,39 @@ namespace EscanerEquipos
                     DisplayAlert("Scan details", "Incorrect scanning", "OK");
                 }
             });
+        }
+
+        public class ScanItem
+        {
+            public DateTime ScanDate { get; set; } // Fecha y hora del escaneo
+            public string Content { get; set; }    // Contenido del escaneo
+
+            // Constructor de la clase que recibe la fecha y hora del escaneo y su contenido
+            public ScanItem(DateTime scanDate, string content)
+            {
+                ScanDate = scanDate;
+                Content = content;
+            }
+
+            // Método que convierte un objeto ScanItem a una cadena con formato específico para almacenar en Preferences
+            public override string ToString()
+            {
+                // El formato de almacenamiento es: "MM-dd-yyyy HH:mm:ss|Contenido del escaneo"
+                return $"{ScanDate:MM-dd-yyyy HH:mm:ss}|{Content}";
+            }
+
+            // Método estático que crea un objeto ScanItem a partir de una cadena con formato específico almacenada en Preferences
+            public static ScanItem FromString(string value)
+            {
+                var parts = value.Split('|');
+                if (parts.Length == 2 && DateTime.TryParseExact(parts[0], "MM-dd-yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime scanDate))
+                {
+                    // Si la cadena tiene el formato correcto, se crea y devuelve un nuevo objeto ScanItem
+                    return new ScanItem(scanDate, parts[1]);
+                }
+                // Si la cadena no tiene el formato correcto, se devuelve null
+                return null;
+            }
         }
 
         private void Guardar_Clicked(object sender, EventArgs e)
@@ -158,39 +203,6 @@ namespace EscanerEquipos
             barcodeEntry.Text = "";
             manualEntry.Text = "";
             manual2Entry.Text = "";
-        }
-
-        public class ScanItem
-        {
-            public DateTime ScanDate { get; set; } // Fecha y hora del escaneo
-            public string Content { get; set; }    // Contenido del escaneo
-
-            // Constructor de la clase que recibe la fecha y hora del escaneo y su contenido
-            public ScanItem(DateTime scanDate, string content)
-            {
-                ScanDate = scanDate;
-                Content = content;
-            }
-
-            // Método que convierte un objeto ScanItem a una cadena con formato específico para almacenar en Preferences
-            public override string ToString()
-            {
-                // El formato de almacenamiento es: "MM-dd-yyyy HH:mm:ss|Contenido del escaneo"
-                return $"{ScanDate:MM-dd-yyyy HH:mm:ss}|{Content}";
-            }
-
-            // Método estático que crea un objeto ScanItem a partir de una cadena con formato específico almacenada en Preferences
-            public static ScanItem FromString(string value)
-            {
-                var parts = value.Split('|');
-                if (parts.Length == 2 && DateTime.TryParseExact(parts[0], "MM-dd-yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime scanDate))
-                {
-                    // Si la cadena tiene el formato correcto, se crea y devuelve un nuevo objeto ScanItem
-                    return new ScanItem(scanDate, parts[1]);
-                }
-                // Si la cadena no tiene el formato correcto, se devuelve null
-                return null;
-            }
         }
 
     }
