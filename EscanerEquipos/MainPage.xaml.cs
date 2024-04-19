@@ -59,18 +59,6 @@ namespace EscanerEquipos
             }
         }
 
-        private async void OnToggleTorchClicked(object sender, EventArgs e)
-        {
-            if (cameraView.FlashMode == FlashMode.Disabled)
-            {
-                cameraView.FlashMode = FlashMode.Enabled;
-            }
-            else
-            {
-                await DisplayAlert("Torch Unavailable", "Torch is not available on this device's camera.", "OK");
-            }
-        }
-
         private int currentCameraIndex = 0;
 
         private void ToggleCamera_Clicked(object sender, EventArgs e)

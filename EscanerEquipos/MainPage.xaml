@@ -17,25 +17,14 @@
                            BarCodeDetectionEnabled="True" 
                            BarcodeDetected="cameraView_BarcodeDetected"/>
 
-            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                 <Button Clicked="ToggleCamera_Clicked" 
-            BackgroundColor="#FF2400" 
-            WidthRequest="55" HeightRequest="40" 
-            ToolTipProperties.Text="Toggle camera">
+                BackgroundColor="#FF2400" 
+                WidthRequest="100" HeightRequest="40" 
+                ToolTipProperties.Text="Toggle camera">
                     <Button.ImageSource>
                         <FileImageSource File="togglecam.png"/>
                     </Button.ImageSource>
                 </Button>
-
-                <Button Clicked="OnToggleTorchClicked" 
-            BackgroundColor="#FF2400" 
-            WidthRequest="55" HeightRequest="40" 
-            ToolTipProperties.Text="Toggle torch">
-                    <Button.ImageSource>
-                        <FileImageSource File="destello.png"/>
-                    </Button.ImageSource>
-                </Button>
-            </HorizontalStackLayout>
 
             <Grid>
                 <Grid.RowDefinitions>
