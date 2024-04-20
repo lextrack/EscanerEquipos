@@ -20,6 +20,11 @@
         HorizontalTextAlignment="Center"/>
 
         <Label
+        Text="Thanks to hjam40 for creating Camera.MAUI, which has been used in this app." Margin="5"
+        FontSize="Small"
+        HorizontalTextAlignment="Center"/>
+
+        <Label
         Text="© Lextrack 2024" Margin="5"
         FontSize="Small"
         HorizontalTextAlignment="Center"/>

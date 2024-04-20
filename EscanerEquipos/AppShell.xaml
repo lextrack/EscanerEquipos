@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:EscanerEquipos"
-    Shell.FlyoutBehavior="Disabled" BackgroundColor="#1D485C">
+    Shell.FlyoutBehavior="Disabled" BackgroundColor="#4419D9">
 
     <ShellContent
         Title="Home"
