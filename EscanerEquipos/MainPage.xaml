@@ -6,53 +6,66 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="5" Padding="10" VerticalOptions="Center">
-            <Label Text="ESCANER DE QR" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Barcode and QR Code Scanner" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
 
-            <Editor x:Name="barcodeEntry" Placeholder="Escanea un QR para leer su información aquí" FontSize="13" IsReadOnly="True"/>
-            <Entry x:Name="manualEntry" Placeholder="Ingresa una observación" FontSize="13" MaxLength="100"/>
-            <Entry x:Name="manual2Entry" Placeholder="Ingresa otra observación" FontSize="13" MaxLength="100"/>
+            <Editor x:Name="barcodeEntry" Placeholder="Scan a QR to read its information here" FontSize="13" IsReadOnly="True"/>
+            <Entry x:Name="manualEntry" Placeholder="Enter a comment" FontSize="13" MaxLength="100"/>
+            <Entry x:Name="manual2Entry" Placeholder="Enter another comment" FontSize="13" MaxLength="100"/>
 
             <cv:CameraView x:Name="cameraView" WidthRequest="300" HeightRequest="200" 
                            CamerasLoaded="cameraView_CamerasLoaded" 
                            BarCodeDetectionEnabled="True" 
                            BarcodeDetected="cameraView_BarcodeDetected"/>
 
-            <Button Clicked="ToggleCamera_Clicked" TextColor="White" BackgroundColor="#FF2400"
-                    WidthRequest="120" HeightRequest="50"
-                    ToolTipProperties.Text="Cambiar cámara">
-                <Button.ImageSource>
-                    <FileImageSource File="togglecam.png"/>
-                </Button.ImageSource>
-            </Button>
-            
+                <Button Clicked="ToggleCamera_Clicked" 
+                BackgroundColor="#FF2400" 
+                WidthRequest="100" HeightRequest="40" 
+                ToolTipProperties.Text="Toggle camera">
+                    <Button.ImageSource>
+                        <FileImageSource File="togglecam.png"/>
+                    </Button.ImageSource>
+                </Button>
+
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Grid.Row="0">
-                    <Button Clicked="Guardar_Clicked" BackgroundColor="ForestGreen" TextColor="White" Margin="3" 
+                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Button Clicked="Guardar_Clicked" BackgroundColor="ForestGreen" Margin="3" 
                     WidthRequest="55" HeightRequest="40" 
-                    ToolTipProperties.Text="Guardar datos">
+                    ToolTipProperties.Text="Save data">
                         <Button.ImageSource>
                             <FileImageSource File="save.png"/>
                         </Button.ImageSource>
                     </Button>
 
-                    <Button Clicked="Limpiar_Clicked" TextColor="White" BackgroundColor="#246EE9" Margin="3" 
+                    <Button Clicked="Historia_Clicked" BackgroundColor="#246EE9" Margin="3" 
                     WidthRequest="55" HeightRequest="40" 
-                    ToolTipProperties.Text="Limpiar campos">
+                    ToolTipProperties.Text="History of scanned QRs">
+                        <Button.ImageSource>
+                            <FileImageSource File="history.png"/>
+                        </Button.ImageSource>
+                    </Button>
+
+                    <Button Clicked="Limpiar_Clicked" Margin="3"
+                    WidthRequest="55" HeightRequest="40" 
+                    ToolTipProperties.Text="Clear Fields">
                         <Button.ImageSource>
                             <FileImageSource File="clean.png"/>
                         </Button.ImageSource>
                     </Button>
-                    
-                    <!-- <Button Text="Historial" Clicked="Historia_Clicked" BackgroundColor="ForestGreen" TextColor="White" Margin="3"/> -->
+
                 </StackLayout>
-
+                <Button Clicked="Info_Clicked" BackgroundColor="#246EE9" Margin="3" HorizontalOptions="End"
+                    WidthRequest="55" HeightRequest="40" 
+                    ToolTipProperties.Text="About">
+                    <Button.ImageSource>
+                        <FileImageSource File="info.png"/>
+                    </Button.ImageSource>
+                </Button>
             </Grid>
-
         </VerticalStackLayout>
     </ScrollView>
 

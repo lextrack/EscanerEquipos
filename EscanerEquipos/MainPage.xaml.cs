@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using Camera.MAUI;
+using EscanerEquipos.Views;
+using System.Collections.ObjectModel;
 using System.Globalization;
 
 namespace EscanerEquipos
@@ -39,38 +41,6 @@ namespace EscanerEquipos
                 }
             }
         }
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            // Asegúrate de que el CameraView está inicializado y tiene cámaras disponibles
-            if (cameraView != null && cameraView.Cameras.Count > 0)
-            {
-                // Detiene la cámara si está activa y la reinicia
-                await cameraView.StopCameraAsync();
-                await cameraView.StartCameraAsync();
-            }
-        }
-
-        private SemaphoreSlim cameraSemaphore = new SemaphoreSlim(1, 1);
-
-        protected override async void OnDisappearing()
-        {
-            await cameraSemaphore.WaitAsync();
-            try
-            {
-                base.OnDisappearing();
-                if (cameraView != null)
-                {
-                    await cameraView.StopCameraAsync();
-                }
-            }
-            finally
-            {
-                cameraSemaphore.Release();
-            }
-        }
-
 
         private void cameraView_CamerasLoaded(object sender, EventArgs e)
         {
@@ -110,7 +80,7 @@ namespace EscanerEquipos
             }
             else
             {
-                DisplayAlert("Cambio de cámara", "No hay cámaras disponibles en el dispositivo para cambiar. Reinicia la app si conectaste una cámara", "OK");
+                DisplayAlert("Toggle camera", "There are no cameras connected to the device.", "OK");
             }
         }
 
@@ -133,58 +103,9 @@ namespace EscanerEquipos
                 else
                 {
                     // Mostrar una alerta en caso de que no se haya detectado ningún código de barras válido
-                    DisplayAlert("Error", "Escaneo erróneo", "OK");
+                    DisplayAlert("Scan details", "Incorrect scanning", "OK");
                 }
             });
-        }
-
-        private void Guardar_Clicked(object sender, EventArgs e)
-        {
-            // Obtener contenido del campo de entrada del código de barras.
-            string scannedContent = barcodeEntry.Text;
-
-            // Obtener contenido del primer campo de entrada manual.
-            string manualContent = manualEntry.Text;
-
-            // Obtener contenido del segundo campo de entrada manual.
-            string manual2Content = manual2Entry.Text;
-
-            // Verificar si alguna de las entradas no está vacía antes de proceder.
-            if (!string.IsNullOrEmpty(scannedContent) || !string.IsNullOrEmpty(manualContent) || !string.IsNullOrEmpty(manual2Content))
-            {
-                // Formatear el contenido combinado con etiquetas descriptivas.
-                string combinedContent = $"{scannedContent}\nObservación 1: {manualContent}\nObservación 2: {manual2Content}";
-
-                // Capturar la fecha y hora actual.
-                DateTime scanDate = DateTime.Now; // Obtener la fecha y hora actual
-                                                  // Crear un nuevo objeto de historial de escaneo con la fecha y contenido combinado.
-                var scanItem = new ScanItem(scanDate, combinedContent);
-                // Agregar el nuevo ítem de escaneo al historial.
-                scanHistory.Add(scanItem);
-
-                // Convertir el historial de escaneos a string y almacenarlo persistentemente.
-                var historyString = string.Join(",", scanHistory.Select(item => item.ToString()));
-                Preferences.Set("ScanHistory", historyString);
-
-                // Limpiar los campos de texto después de guardar.
-                barcodeEntry.Text = "";
-                manualEntry.Text = "";
-                manual2Entry.Text = "";
-
-                DisplayAlert("Guardar", "El contenido ha sido guardado en el historial.", "OK");
-            }
-        }
-
-        /*private async void Historia_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new ScanHistoryPage());
-        }*/
-
-        private void Limpiar_Clicked(object sender, EventArgs e)
-        {
-            barcodeEntry.Text = "";
-            manualEntry.Text = "";
-            manual2Entry.Text = "";
         }
 
         public class ScanItem
@@ -202,15 +123,15 @@ namespace EscanerEquipos
             // Método que convierte un objeto ScanItem a una cadena con formato específico para almacenar en Preferences
             public override string ToString()
             {
-                // El formato de almacenamiento es: "dd-MM-yyyy HH:mm:ss|Contenido del escaneo"
-                return $"{ScanDate:dd-MM-yyyy HH:mm:ss}|{Content}";
+                // El formato de almacenamiento es: "MM-dd-yyyy HH:mm:ss|Contenido del escaneo"
+                return $"{ScanDate:MM-dd-yyyy HH:mm:ss}|{Content}";
             }
 
             // Método estático que crea un objeto ScanItem a partir de una cadena con formato específico almacenada en Preferences
             public static ScanItem FromString(string value)
             {
                 var parts = value.Split('|');
-                if (parts.Length == 2 && DateTime.TryParseExact(parts[0], "dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime scanDate))
+                if (parts.Length == 2 && DateTime.TryParseExact(parts[0], "MM-dd-yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime scanDate))
                 {
                     // Si la cadena tiene el formato correcto, se crea y devuelve un nuevo objeto ScanItem
                     return new ScanItem(scanDate, parts[1]);
@@ -218,6 +139,58 @@ namespace EscanerEquipos
                 // Si la cadena no tiene el formato correcto, se devuelve null
                 return null;
             }
+        }
+
+        private void Guardar_Clicked(object sender, EventArgs e)
+        {
+            // Obtener contenido del campo de entrada del código de barras.
+            string scannedContent = barcodeEntry.Text;
+
+            // Obtener contenido del primer campo de entrada manual.
+            string manualContent = manualEntry.Text;
+
+            // Obtener contenido del segundo campo de entrada manual.
+            string manual2Content = manual2Entry.Text;
+
+            // Verificar si alguna de las entradas no está vacía antes de proceder.
+            if (!string.IsNullOrEmpty(scannedContent) || !string.IsNullOrEmpty(manualContent) || !string.IsNullOrEmpty(manual2Content))
+            {
+                // Formatear el contenido combinado con etiquetas descriptivas.
+                string combinedContent = $"{scannedContent}\nComment 1: {manualContent}\nComment 2: {manual2Content}";
+
+                // Capturar la fecha y hora actual.
+                DateTime scanDate = DateTime.Now; // Obtener la fecha y hora actual
+                                                  // Crear un nuevo objeto de historial de escaneo con la fecha y contenido combinado.
+                var scanItem = new ScanItem(scanDate, combinedContent);
+                // Agregar el nuevo ítem de escaneo al historial.
+                scanHistory.Add(scanItem);
+
+                // Convertir el historial de escaneos a string y almacenarlo persistentemente.
+                var historyString = string.Join(",", scanHistory.Select(item => item.ToString()));
+                Preferences.Set("ScanHistory", historyString);
+
+                // Limpiar los campos de texto después de guardar.
+                barcodeEntry.Text = "";
+                manualEntry.Text = "";
+                manual2Entry.Text = "";
+            }
+        }
+
+        private async void Historia_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ScanHistoryPage());
+        }
+
+        private async void Info_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new InformationPage());
+        }
+
+        private void Limpiar_Clicked(object sender, EventArgs e)
+        {
+            barcodeEntry.Text = "";
+            manualEntry.Text = "";
+            manual2Entry.Text = "";
         }
 
     }

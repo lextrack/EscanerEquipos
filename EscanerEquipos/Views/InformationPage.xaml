@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EscanerEquipos.Views.InformationPage"
+             Title="About">
+    <VerticalStackLayout Padding="20" HorizontalOptions="Center" VerticalOptions="Start">
+        <Label
+        Text="Thank you for your support!" Margin="5"
+        FontSize="Medium"
+        HorizontalTextAlignment="Center"/>
+
+        <Label
+        Text="Version 1.0" Margin="5"
+        FontSize="Small"
+        HorizontalTextAlignment="Center"/>
+
+        <Label
+        Text="Thanks to Flaticon for the icons that are been used in this app" Margin="5"
+        FontSize="Small"
+        HorizontalTextAlignment="Center"/>
+
+        <Label
+        Text="Thanks to hjam40 for creating Camera.MAUI, which has been used in this app." Margin="5"
+        FontSize="Small"
+        HorizontalTextAlignment="Center"/>
+
+        <Label
+        Text="© Lextrack 2024" Margin="5"
+        FontSize="Small"
+        HorizontalTextAlignment="Center"/>
+    </VerticalStackLayout>
+
+</ContentPage>
